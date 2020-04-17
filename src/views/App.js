@@ -20,7 +20,8 @@ const App = (props) => {
   return (
     <>
       {tours.map((item) => {
-        return <h1>${item.featuredThumbnail}</h1>;
+        // return <h1>${item.featuredThumbnail}</h1>;
+        return <Tour item={item} />;
       })}
       <Tour />
       {/* <p>Bedu travels tours: {JSON.stringify(tours)}</p> */}
