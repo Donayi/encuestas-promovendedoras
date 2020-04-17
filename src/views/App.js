@@ -1,5 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Profile from "./Profile";
 import Tour from "../component/Tour";
 
 import "./App.css";
@@ -18,14 +20,20 @@ const App = (props) => {
   }, []);
 
   return (
-    <>
-      {tours.map((item) => {
-        // return <h1>${item.featuredThumbnail}</h1>;
-        return <Tour item={item} />;
-      })}
-      <Tour />
-      {/* <p>Bedu travels tours: {JSON.stringify(tours)}</p> */}
-    </>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+        </ul>
+      </nav>
+      <Route path="/" component={Dashboard} />
+      <Route path="/profile" component={Profile} />
+    </BrowserRouter>
   );
 };
 
