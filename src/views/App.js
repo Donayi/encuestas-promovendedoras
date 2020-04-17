@@ -4,26 +4,28 @@ import Tour from "../component/Tour";
 
 import "./App.css";
 
-function App() {
+const App = (props) => {
+  const [tours, setTours] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://bedu-travels-node.herokuapp.com/tours")
+      .then((response) => {
+        return response.json();
+      })
+      .then((jsonData) => {
+        setTours(jsonData.data);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-          <Tour />
-        </a>
-      </header>
-    </div>
+    <>
+      {tours.map((item) => {
+        return <h1>${item.featuredThumbnail}</h1>;
+      })}
+      <Tour />
+      {/* <p>Bedu travels tours: {JSON.stringify(tours)}</p> */}
+    </>
   );
-}
+};
 
 export default App;
