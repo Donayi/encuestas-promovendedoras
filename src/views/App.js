@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import Tour from "../component/Tour";
+import Welcome from "../component/Main"
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ const App = (props) => {
 
   return (
     <>
+    <Welcome />
       {tours.map((item) => {
         // return <h1>${item.featuredThumbnail}</h1>;
         return <Tour item={item} />;
